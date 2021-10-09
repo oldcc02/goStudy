@@ -704,6 +704,50 @@ func main() {
 }
 ```
 
+#### 10.5 interface通用万能类型与interface断言
+
+- 空接口
+- int，string，struct ... 都实现了interface{}
+- 可以用interface{}类型引用任意的数据类型
+
+```go
+package main
+
+import "fmt"
+
+type book struct {
+	name string
+}
+
+func test(arg interface{}) {
+	fmt.Printf("arg type is %T \n", arg)
+	// 类型断言
+	value, flag := arg.(string)
+	// 如果arg 是string类型 会执行下面代码
+	if flag {
+		fmt.Println("arg type is string,value = ", value)
+
+	}
+}
+
+func main() {
+	book := book{name: "哈利波特"}
+	test(book)
+
+	s := "ttt"
+	test(s)
+}
+
+// ==>
+// arg type is main.book
+// arg type is string
+// arg type is string,value =  ttt
+```
+
+
+
+
+
 ### **一些坑
 
 1. 共有属性，私有属性
