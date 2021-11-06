@@ -11,29 +11,27 @@ IDE：goland
 go的优势
 
 - 部署简单
-  - [ ] 可直接编译为机器码
-  - [ ] 不依赖其他库
-  - [ ] 直接运行即可部署
+    - [ ] 可直接编译为机器码
+    - [ ] 不依赖其他库
+    - [ ] 直接运行即可部署
 - 静态类型语言
-  - [ ] 编译时检查出隐藏的大多数问题
+    - [ ] 编译时检查出隐藏的大多数问题
 
 - 语言层面的并发
-  - [ ] 天生的基因支持
-  - [ ] 充分利用多核
+    - [ ] 天生的基因支持
+    - [ ] 充分利用多核
 
 - 强大的标准库支撑
-  - [ ] runtime系统调度机制
-  - [ ] 高效的GC垃圾回收
-  - [ ] 丰富的标准库
+    - [ ] runtime系统调度机制
+    - [ ] 高效的GC垃圾回收
+    - [ ] 丰富的标准库
 
 - 简单易学
 
-  - [ ] 25个关键字
-  - [ ] 语法简洁（参考c），内嵌C语法支持
-  - [ ] 面向对象特征（继承，多态，封装）
-  - [ ] 跨平台
-
-  
+    - [ ] 25个关键字
+    - [ ] 语法简洁（参考c），内嵌C语法支持
+    - [ ] 面向对象特征（继承，多态，封装）
+    - [ ] 跨平台
 
 ### 1.安装go
 
@@ -58,17 +56,17 @@ go的优势
 
 GOPATH目录树
 
-  -GOPATH
+-GOPATH
 
-​		-src   *#项目源码*
+ -src   *#项目源码*
 
-​			-project1  
+ -project1
 
-​			-project2
+ -project2
 
-​		-bin
+ -bin
 
-​		-pkg
+ -pkg
 
 ### 2.使用go
 
@@ -188,7 +186,7 @@ func main() {
 
 ```
 
-###  5 函数
+### 5 函数
 
 #### 5.1 函数以及函数返回值的格式
 
@@ -196,11 +194,9 @@ func main() {
 
 ```go
 func 函数名(参数1 类型, ***) (返回值 返回值类型, ***) {
-	return 返回值
+return 返回值
 }
 ```
-
-
 
 ```go
 package main
@@ -276,7 +272,7 @@ import (
 )
 
 func main() {
-    lib1.Foo() // 如果不使用lib1 需要在import中注释掉lib1的导入
+	lib1.Foo() // 如果不使用lib1 需要在import中注释掉lib1的导入
 	lib2.Bar()
 }
 ```
@@ -321,8 +317,8 @@ func init() {
 package main
 
 import (
-	_ "gostudy/5-init/lib1"      // 匿名导入,会调用对应包中的init函数，但不能使用包提供的接口函数
-	mylib "gostudy/5-init/lib2"  // 别名导入 
+	_ "gostudy/5-init/lib1"     // 匿名导入,会调用对应包中的init函数，但不能使用包提供的接口函数
+	mylib "gostudy/5-init/lib2" // 别名导入 
 )
 
 func main() {
@@ -356,10 +352,11 @@ package main
 import "fmt"
 
 func main() {
-   defer fmt.Println("go end")
-   fmt.Println("fist go")
-   fmt.Println("second go")
+	defer fmt.Println("go end")
+	fmt.Println("fist go")
+	fmt.Println("second go")
 }
+
 // ==>
 // fist go
 // second go
@@ -374,23 +371,24 @@ package main
 import "fmt"
 
 func main() {
-   // defer执行顺序
-   defer func1()
-   defer func2()
-   defer func3()
+	// defer执行顺序
+	defer func1()
+	defer func2()
+	defer func3()
 }
 
 func func3() {
-   fmt.Println("3")
+	fmt.Println("3")
 }
 
 func func2() {
-   fmt.Println("2")
+	fmt.Println("2")
 }
 
 func func1() {
-   fmt.Println("1")
+	fmt.Println("1")
 }
+
 // ==>
 // 3
 // 2
@@ -405,7 +403,7 @@ package main
 import "fmt"
 
 func main() {
-   func4()
+	func4()
 }
 
 func func4() int {
@@ -417,6 +415,7 @@ func func5() int {
 	fmt.Println("I'm return")
 	return 0
 }
+
 // ==>
 // I'm return
 // I'm defer
@@ -428,20 +427,20 @@ func func5() int {
 
 ```go
    // 固定长度的数组
-   array1 := [10]int{1, 2, 3, 4}
+array1 := [10]int{1, 2, 3, 4}
 
-   // 数组遍历方法一
-   for i := 0; i < len(array1); i++ {
-      fmt.Println(array1[i])
-   }
+// 数组遍历方法一
+for i := 0; i < len(array1); i++ {
+fmt.Println(array1[i])
+}
 
-   // 数组遍历方法二
-   for index, value := range array1 {
-      fmt.Println("index = ", index, "value = ", value)
-   }
+// 数组遍历方法二
+for index, value := range array1 {
+fmt.Println("index = ", index, "value = ", value)
+}
 
-   // 动态数组 (常用)
-   array2 := []int{11, 22, 33, 44}
+// 动态数组 (常用)
+array2 := []int{11, 22, 33, 44}
 ```
 
 - 固定数组再函数传参时严格匹配数组类型"[10]int"这种类似形式，且在传递时属于深拷贝
@@ -469,11 +468,11 @@ slice1 := make([]int, 3)
 ```go
 // 切片容量追加
 slice2 := make([]int, 3, 3)
-fmt.Println(slice2)                       // ==> [0 0 0]
+fmt.Println(slice2) // ==> [0 0 0]
 fmt.Println("len slice2 = ", len(slice2)) // ==> len slice2 =  3
 fmt.Println("cap slice2 = ", cap(slice2)) // ==> cap slice2 =  3
 slice2 = append(slice2, 2)
-fmt.Println(slice2)                       // ==> [0 0 0 2]
+fmt.Println(slice2) // ==> [0 0 0 2]
 fmt.Println("len slice2 = ", len(slice2)) // ==> len slice2 =  4
 fmt.Println("cap slice2 = ", cap(slice2)) // ==> cap slice2 =  6
 ```
@@ -489,7 +488,7 @@ fmt.Println("cap slice2 = ", cap(slice2)) // ==> cap slice2 =  6
 slice3 := []int{1, 2, 3, 4}
 s1 := slice3[1:3] // 左闭右开
 s2 := slice3[:3]
-fmt.Println(s1,s2) // ==> [2 3] [1 2 3]
+fmt.Println(s1, s2) // ==> [2 3] [1 2 3]
 
 // 切片截取方法二 copy(),这种方式需要提前给复制后的切片分配空间
 s3 := make([]int, 4)
@@ -523,7 +522,7 @@ map1["a"] = "update"
 delete(map1, "b")
 // 遍历
 for key, value := range map1 {
-   fmt.Println(key, value)
+fmt.Println(key, value)
 }
 // ==>
 // a update
@@ -544,11 +543,9 @@ for key, value := range map1 {
 
 ```go
 func (receiver *Object) name()  {
-	// do something
+// do something
 }
 ```
-
-
 
 ```go
 package main
@@ -591,55 +588,55 @@ package main
 import "fmt"
 
 type Animal struct {
-   name string
-   legs int
+	name string
+	legs int
 }
 
 func (animal Animal) Eat() {
-   fmt.Println(animal.name, "can eat")
+	fmt.Println(animal.name, "can eat")
 }
 
 func (animal Animal) leg() {
-   fmt.Println("animal have leg")
+	fmt.Println("animal have leg")
 }
 
 type dog struct {
-   Animal
-   food string
+	Animal
+	food string
 }
 
 func (dog dog) Eat2() {
-   fmt.Println(dog.name, "eat", dog.food)
+	fmt.Println(dog.name, "eat", dog.food)
 }
 
 func (dog dog) leg() {
-   dog.Animal.leg()
-   fmt.Println(dog.name, "有", dog.legs)
+	dog.Animal.leg()
+	fmt.Println(dog.name, "有", dog.legs)
 }
 func main() {
-   dog1 := Animal{
-      name: "泰迪",
-      legs: 4,
-   }
-   dog1.Eat() // ==> 泰迪 can eat
+	dog1 := Animal{
+		name: "泰迪",
+		legs: 4,
+	}
+	dog1.Eat() // ==> 泰迪 can eat
 
-   dog2 := dog{
-      Animal: Animal{
-         name: "柴犬",
-         legs: 4,
-      },
-      food: "屎",
-   }
-   dog2.Eat()  //父类的方法 ==> 柴犬 can eat
-   dog2.Eat2() //子类的方法 ==> 柴犬 eat 屎
+	dog2 := dog{
+		Animal: Animal{
+			name: "柴犬",
+			legs: 4,
+		},
+		food: "屎",
+	}
+	dog2.Eat()  //父类的方法 ==> 柴犬 can eat
+	dog2.Eat2() //子类的方法 ==> 柴犬 eat 屎
 
-   var dog3 dog
-   dog3.name = "哈士奇"
-   dog3.legs = 4
-   dog3.food = "沙发"
+	var dog3 dog
+	dog3.name = "哈士奇"
+	dog3.legs = 4
+	dog3.food = "沙发"
 
-   dog3.Eat2() // 子类的方法 ==> 哈士奇 eat 沙发
-   dog3.leg()  // 继承并重写父类的方法
+	dog3.Eat2() // 子类的方法 ==> 哈士奇 eat 沙发
+	dog3.leg()  // 继承并重写父类的方法
 }
 ```
 
@@ -746,65 +743,271 @@ func main() {
 
 ### 11 反射 reflect
 
+#### 11.1 reflect.TypeOf和reflect.ValueOf
+
 ```go
 package main
 
 import (
-   "fmt"
-   "reflect"
+	"fmt"
+	"reflect"
 )
 
 type Book struct {
-   name     string
-   readTime int
+	name     string
+	readTime int
 }
 
 func (book Book) readBook(time int) {
-   fmt.Println("read a book")
-   book.readTime += time
+	fmt.Println("read a book")
+	book.readTime += time
 }
 
 func myReflect(arg interface{}) {
-   fmt.Println(reflect.TypeOf(arg))
-   fmt.Println(reflect.ValueOf(arg))
+	fmt.Println(reflect.TypeOf(arg))
+	fmt.Println(reflect.ValueOf(arg))
 }
 
 func reflectFieldAndMethod(arg interface{}) {
-   // 获取arg的type
-   inputType := reflect.TypeOf(arg)
-   fmt.Println("input arg type is", inputType)
+	// 获取arg的type
+	inputType := reflect.TypeOf(arg)
+	fmt.Println("input arg type is", inputType)
 
-   // 获取arg的value
-   inputValue := reflect.ValueOf(arg)
-   fmt.Println("input arg value is", inputValue)
+	// 获取arg的value
+	inputValue := reflect.ValueOf(arg)
+	fmt.Println("input arg value is", inputValue)
 
-   // 通过inputType.Field(i)获取arg的字段，字段的数据类型
-   // 通过inputValue.Field(i).Interface()获取arg字段的值
-   for i := 0; i < inputType.NumField(); i++ {
-      field := inputType.Field(i)
-      value := inputValue.Field(i)
-      fmt.Printf("%s %v = %v \n", field.Name, field.Type, value)
-   }
+	// 通过inputType.Field(i)获取arg的字段，字段的数据类型
+	// 通过inputValue.Field(i).Interface()获取arg字段的值
+	for i := 0; i < inputType.NumField(); i++ {
+		field := inputType.Field(i)
+		value := inputValue.Field(i)
+		fmt.Printf("%s %v = %v \n", field.Name, field.Type, value)
+	}
 
-   //通过inputType.Method(i)获取arg的方法调用
-   for i := 0; i < inputType.NumMethod(); i++ {
-      method := inputType.Method(i)
-      fmt.Printf("%s %T \n", method.Name, method.Type)
-   }
+	//通过inputType.Method(i)获取arg的方法调用
+	for i := 0; i < inputType.NumMethod(); i++ {
+		method := inputType.Method(i)
+		fmt.Printf("%s %T \n", method.Name, method.Type)
+	}
 }
 
 func main() {
-   var str string = "tttt"
-   myReflect(str)
+	var str string = "tttt"
+	myReflect(str)
 
-   var book Book = Book{
-      name:     "哈利波特",
-      readTime: 10,
-   }
-   //myReflect(book)
-   reflectFieldAndMethod(book)
+	var book Book = Book{
+		name:     "哈利波特",
+		readTime: 10,
+	}
+	//myReflect(book)
+	reflectFieldAndMethod(book)
 }
 ```
+
+#### 11.2 结构体标签
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type student struct {
+	Name string `info:"姓名"`
+	Sex  string `info:"性别"`
+}
+
+func getTag(i interface{}) {
+	inputType := reflect.TypeOf(i)
+	tagKey := "info"
+	for i := 0; i < inputType.NumField(); i++ {
+		tagValue := inputType.Field(i).Tag.Get(tagKey)
+		fmt.Println(tagKey,tagValue)
+	}
+}
+
+func main() {
+	var xiaoHong student
+	getTag(xiaoHong)
+}
+// ==>
+//info 姓名
+//info 性别
+```
+
+#### 11.3 json中对结构体标签的使用
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type Teacher struct {
+	Name     string    `json:"name"`
+	Sex      string    `json:"sex"`
+	Age      int       `json:"age"`
+	Students []student `json:"students"`
+}
+
+type student struct {
+	Name string `json:"name"`
+	Sex  string `json:"sex"`
+}
+
+func main() {
+	xiaoHong := student{
+		Name: "小红",
+		Sex:  "女",
+	}
+	xiaoMing := student{
+		Name: "小明",
+		Sex:  "男",
+	}
+	laoZhang := Teacher{
+		Name:     "老张",
+		Sex:      "男",
+		Age:      20,
+		Students: []student{xiaoHong, xiaoMing},
+	}
+	// 将结构体转换为json
+	jsonResult, err := json.Marshal(laoZhang)
+	if err != nil {
+		fmt.Printf("err %s", err)
+		return
+	}
+	fmt.Printf("%s \n", jsonResult)
+
+	// 将json转换为结构体
+	teacherStruct := Teacher{}
+	err = json.Unmarshal([]byte("{\"name\":\"老张\",\"sex\":\"男\",\"age\":20}"), &teacherStruct)
+	if err != nil {
+		fmt.Printf("err %s", err)
+	}
+	fmt.Printf("%v \n", teacherStruct)
+}
+// ==>
+//{"name":"老张","sex":"男","age":20,"students":[{"name":"小红","sex":"女"},{"name":"小明","sex":"男"}]}
+//{老张 男 20 []}
+
+```
+
+### 12 goroutine
+
+协程概念自行百度
+
+区别于python的 async 和 await创建协程，go的协程创建使用 “go” 关键字即可，开发者无需关心其他，go调度器会自动将任务放到系统线程上执行
+
+```go
+package main
+
+import (
+	"fmt"
+	"runtime"
+	"time"
+)
+
+func task() {
+	for true {
+		fmt.Println("子协程")
+		time.Sleep(time.Second)
+		// 退出协程
+		runtime.Goexit()
+	}
+}
+
+func main() {
+	// 使用go关键字创建goroutine
+	go task()
+
+	for true {
+		fmt.Println("主协程")
+		time.Sleep(time.Second)
+	}
+}
+```
+
+### 13 channel
+
+#### 13.1 无缓冲channel
+
+channel可以看作是一个先进先出的队列
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func add(x int, y int, c chan int) {
+	time.Sleep(time.Second * 2)
+	// 传值给channel channel <- value
+	c <- x + y
+}
+
+func addThree(c chan int) {
+	for i := 0; i < 3; i++ {
+		c <- i
+	}
+	// 如果不手动关闭channel 使用range会阻塞导致报错
+	// range会认为协程还在写入值到channel
+	close(c)
+}
+func main() {
+	// 无缓冲创建
+	c := make(chan int)
+	x := 10
+	y := 12
+	go add(x, y, c)
+	go add(x, y+1, c)
+	go add(x+1, y, c)
+	// channel中获取值
+	// 方法一 param,ok := <-channel
+	// 使用这种方法获取channel中的值会发生阻塞
+	// 直到等到channel中有值传过来
+	z1, ok := <-c
+	if ok {
+		fmt.Println(z1)
+	}
+
+	z2, ok := <-c
+	if ok {
+		fmt.Println(z2)
+	}
+
+	z3, ok := <-c
+	if ok {
+		fmt.Println(z3)
+	}
+
+	// 方法二 for item := range channel
+	c2 := make(chan int)
+	go addThree(c2)
+	for item := range c2 {
+		fmt.Println(item)
+	}
+}
+```
+
+#### 13.2 有缓冲channel
+
+相比无缓冲channel，有缓冲channel在make时设置了size，当写入channel的值的个数达到设定的size时会发生阻塞，直到群有其他任务从channel中取出值，才会继续向channel写入
+
+`c := make(chan int , 10)`
+
+#### 13.3 channel的关闭
+
+- channel关闭后无法继续向其中发送数据，会抛出panic错误  
+- channel关闭会可以继续读取其中已经存在的数据，直到读完所有数据后会返回零值
+- 使用range读取channel需要显式的关闭channel，否则会导致range阻塞报错
+- 对于nil channel，无论收发都会阻塞
 
 ### **一些坑
 
@@ -814,5 +1017,6 @@ func main() {
 
 2. 自定义包
 
-   - package 名必须与所在包名一致
-   - 引入时路径基于系统环境变量的GOPATH路径
+    - package 名必须与所在包名一致
+    - 引入时路径基于系统环境变量的GOPATH路径
+
