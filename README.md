@@ -1,1 +1,1 @@
-# goStudy
+# goStudy readme
